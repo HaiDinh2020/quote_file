@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Data Table</title>
+    <style>
+        table {
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        .col1 {
+            overflow: hidden;
+            min-width: 35px;
+            max-width: 35px;
+        }
+
+        .col2 {
+            overflow: hidden;
+            min-width: 90px;
+            max-width: 90px;
+        }
+        .col3 {
+            overflow: hidden;
+            min-width: 125px;
+            max-width: 125px;
+        }
+        .col4 {
+            overflow: hidden;
+            min-width: 360px;
+            max-width: 360px;
+        }
+        .col5 {
+            overflow: hidden;
+            min-width: 54px;
+            max-width: 54px;
+        }
+        .col6 {
+            overflow: hidden;
+            min-width: 130px;
+            max-width: 130px;
+        }
+        .col7 {
+            overflow: hidden;
+            min-width: 110px;
+            max-width: 110px;
+        }
+        .col8 {
+            overflow: hidden;
+            min-width: 100px;
+            max-width: 100px;
+        }
+        .col9 {
+            overflow: hidden;
+            min-width: 138px;
+            max-width: 138px;
+        }
+        .col10 {
+            overflow: hidden;
+            min-width: 100px;
+            max-width: 100px;
+        }
+        .col11 {
+            overflow: hidden;
+            min-width: 70px;
+            max-width: 70px;
+        }
+
+        td a {
+            font-size: 0.8rem; /* Adjust font size as needed */
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: center;
+            text-overflow: ellipsis;
+        }
+
+        th {
+            background-color: #3937a9;
+            border: 0;
+            color: #dddddd;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" 
+        crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+   
+    <table id="table-type-1">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ</th>
+                <th class="col9">Roadblock xuyên site 
+                    (Độc quyền ngày)</th>
+                <th class="col10">CTR trung bình (%)</th>
+                <th class="col11">Est. Traffic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data1) { %>
+            
+                <tr class="<%= item.id %>">
+                    <td class="col1"><%= item.id %></td>
+                    <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                    <td class="col3"><%= item.position %></td>
+                    <td class="col4"><%= item.dimensions %></td>
+                    <td class="col5"><%= item.platform %></td>
+                    <td class="col6">
+                    
+                        <% item.link_demo.forEach((link, index) => { %>
+                            <% console.log( link, "-", index) %>
+                            <a href="<%= link %>"><%= item.display_link_demo[index] || 'No Link' %></a>
+                            <br>
+                        <% }); %>
+                      </td>
+                      
+                      
+                    <td class="col7"><%= item.buying_method %></td>
+                    <td class="col8"><%= item.homepage %></td>
+                    <td class="col9"><%= item.c_s_roadblock %></td>
+                    <td class="col10"><%= item.ctr %></td>
+                    <td class="col11"><%= item.est %></td>
+                </tr>
+                <% if (item.id > 1 ) { %>
+                   <% break %>
+                <% } %>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="table-type-2">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Đơn giá(VNĐ)</th>
+                <th class="col9">CTR trung bình (%)</th>
+                <th class="col10">Est.Impression</th>
+                <th class="col11">Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data2) { %>
+                <tr class="<%= item.id %>">
+                <td class="col1"><%= item.id %></td>
+                <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="col3"><%= item.position %></td>
+                <td class="col4"><%= item.dimensions %></td>
+                <td class="col5"><%= item.platform %></td>
+                <td class="col6">
+                    <% item.link_demo.forEach((link, index) => { %>
+                        <a href="<%= link %>"><%= item.display_link_demo[index] || 'No Link' %></a>
+                        <br>
+                    <% }); %>
+                  </td>
+                <td class="col7"><%= item.buying_method %></td>
+                <td class="col8"><%= item.price %></td>
+                <td class="col9"><%= item.ctr %></td>
+                <td class="col10"><%= item.e_i %></td>
+                <td class="col11"><%= item.note %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="table-type-3">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Tên vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ
+                    (Đã gồm VAT)
+                </th>
+                <th class="col9">Xuyên Trang
+                    (Đã gôm VAT)
+                </th>
+                <th class="col10">CHUYÊN MỤC (*)
+                    (Đã gồm VAT)</th>
+                <th class="col11">Est. Traffic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data3) { %>
+                <tr class="<%= item.id %>">
+                <td class="col1"><%= item.id %></td>
+                <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="col3"><%= item.position %></td>
+                <td class="col4"><%= item.dimensions %></td>
+                <td class="col5"><%= item.platform %></td>
+                <td class="col6"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="col7"><%= item.buying_method %></td>
+                <td class="col8"><%= item.homepage %></td>
+                <td class="col9"><%= item.cross_site %></td>
+                <td class="col10"><%= item.subject %></td>
+                <td class="col11"><%= item.note %></td> // change to est_traffic
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="table-type-4">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ
+                    (đã gồm VAT)</th>
+                <th class="col9">Roadblock xuyên site 
+                    (Độc quyền ngày)
+                    (chưa bao gồm VAT)</th>
+                <th class="col10">CTR trung bình (%)</th>
+                <th class="col11">Est. Traffic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data4) { %>
+                <tr class="<%= item.id %>">
+                <td class="col1"><%= item.id %></td>
+                <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="col3"><%= item.position %></td>
+                <td class="col4"><%= item.dimensions %></td>
+                <td class="col5"><%= item.platform %></td>
+                <td class="col6"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="col7"><%= item.buying_method %></td>
+                <td class="col8"><%= item.homepage %></td>
+                <td class="col9"><%= item.c_s_roadblock %></td>
+                <td class="col10"><%= item.ctr %></td>
+                <td class="col11"><%= item.note %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="table-type-5">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Tuần
+                    (Chia sẻ 3)</th>
+                <th class="col8">Tháng
+                    (Chia sẻ 3)</th>
+                <th class="col9">Quý
+                    (Chia sẻ 3)</th>
+                <th class="col10">Est. CTR (%)</th>
+                <th class="col11">Est. Traffic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data5) { %>
+                <tr class="<%= item.id %>">
+                <td class="col1"><%= item.id %></td>
+                <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="col3"><%= item.position %></td>
+                <td class="col4"><%= item.dimensions %></td>
+                <td class="col5"><%= item.platform %></td>
+                <td class="col6"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="col7"><%= item.week %></td>
+                <td class="col8"><%= item.month %></td>
+                <td class="col9"><%= item.quarter_year %></td>
+                <td class="col10"><%= item.ctr %></td>
+                <td class="col11"><%= item.note %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="table-type-6">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Format</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ</th>
+                <th class="col9">Xuyên trang chi tiết</th>
+                <th class="col10">Xuyên trang</th>
+                <th class="col11">EST.Traffic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data6) { %>
+                <tr class="<%= item.id %>">
+                <td class="col1"><%= item.id %></td>
+                <td class="col2"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="col3"><%= item.position %></td>
+                <td class="col4"><%= item.dimensions %></td>
+                <td class="col5"><%= item.platform %></td>
+                <td class="col6"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="col7"><%= item.buying_method %></td>
+                <td class="col8"><%= item.homepage %></td>
+                <td class="col9"><%= item.detailed_cross_site %></td>
+                <td class="col10"><%= item.cross_site %></td>
+                <td class="col11"><%= item.note %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+   
+</body>
+
+<script>
+   
+    var table = document.querySelector("#table-type-1")
+
+
+
+    $(document).ready(function() {
+        $('table').margetable({
+            type: 2,
+            colindex: [0, 1, 2, 3,  7, 9,10, 11]
+        });
+       
+        $('table').margetable({
+            type: 1,
+            colindex: [{
+                index: 6,
+                dependent: [2]
+            }]
+        });
+        $('table').margetable({
+            type: 2,
+            colindex: [4,5]
+        });
+    });
+    var tr = document.querySelectorAll("tbody tr");
+    var class_element = null; 
+
+    for (let index = 0; index < tr.length; index++) {
+        
+        const element = tr[index];
+        const websiteValue = element.querySelector('td:nth-child(2)').innerText; 
+        const linkWebsiteValue = element.querySelector('td:nth-child(3)').innerText;
+        const currentClass = element.className;
+        
+        if (class_element !== currentClass) {
+            const newRow = document.createElement('tr'); 
+            newRow.innerHTML = `
+                <td></td>  <td colspan="10" style="background-color: green;">
+                    <a href="${linkWebsiteValue}" style="color: white; font-size: 20px;">
+                    ${websiteValue}
+                    </a>
+                </td>
+                `;
+
+            element.parentNode.insertBefore(newRow, element);
+            class_element = currentClass;
+        }
+        
+    }
+
+   
+    // $('#table-type-1 .1').before('<tr><td></td><td colspan="10" style="background-color: red;">aldfjldk</td></tr>');
+    
+</script>
+
+<script>
+    /*
+    * 功能：用于合并单元格用
+    * 作者：宙冰
+    * 时间：2018/5/20
+    * 依赖：jquery.1.7.1及以上
+    */
+    ; (function ($, window, document, undefined) {
+        'use strict';//严格javascript模式
+        var margetable = function ($eles, opt) {
+            this.opt = opt;//用户的配置
+            this.defaults = {
+                //合并类型
+                //1：表示指定要合并的列索引，并给出合并列时依赖的列索引（要有先后顺序）
+                //   例如：
+                //   colindex:[{
+                //      index: 2,//要合并的列索引
+                //      dependent: [0,1]//合并列依赖的列索引
+                //   }]
+                //2：同时指定要合并的列索引，后面的列合并时依赖前面的列索引
+                //   例如：
+                //   colindex:[0,1,2]//合并的列，后面的列索引依赖前面的列索引
+                type: 1,
+                colindex: [{
+                    index: 0,//要合并的列索引
+                    dependent: [0]//合并列依赖的列索引，如果index为0，则此值不用赋值
+                }]
+            };
+
+            this.options = $.extend({}, this.defaults, this.opt);
+            var me = this;
+
+            return $eles.each(function () {
+                var $this = $(this);
+                var colIndexs = me.options.colindex;
+                if (me.options.type == "1") {
+                    //循环要合并的配置，并进行合并操作
+                    for (var i = 0; i < colIndexs.length; i++) {
+                        margetColumn($this, colIndexs[i]);
+                    }
+                }
+                else if (me.options.type == "2") {
+                    margetColumn2($this, me.options);
+                }
+            });
+        };
+
+        // 合并列
+        // $ele 要合并的表格
+        // option 用户设置的选项
+        var margetColumn = function ($ele, option) {
+            var me = this;
+            var $trs = $ele.find('tbody tr');
+            var preRecord = {
+                index: 0,
+                rowspan: 1,
+                text: new Object()
+            };//用于记录上一次值不同时的值
+            var curText = new Object();//用于记录当前午的值
+            var isSame = true;//上下两午的值是否相同
+            for (var i = 0; i < $trs.length; i++) {
+                if (i == 0) {
+                    preRecord.index = i;
+                    preRecord.text = setPreRecord($trs.eq(i), option);
+                }
+                else {
+                    isSame = true;
+                    if (option.index > 0 && option.dependent && option.dependent.length > 0) {
+                        for (var deIndex = 0; deIndex < option.dependent.length; deIndex++) {
+                            if (preRecord.text['col' + option.dependent[deIndex]] != $trs.eq(i).find('td').eq(option.dependent[deIndex]).text()) {
+                                isSame = false;
+                            }
+                        }
+                    }
+                    if (isSame == false || preRecord.text['col' + option.index] != $trs.eq(i).find('td').eq(option.index).text()) {
+                        $trs.eq(preRecord.index).find('td').eq(option.index).attr('rowspan', preRecord.rowspan);
+                        preRecord.index = i;
+                        preRecord.rowspan = 1;
+                        preRecord.text = setPreRecord($trs.eq(i), option);
+                    }
+                    else {
+                        preRecord.rowspan++;
+                        $trs.eq(i).find('td').eq(option.index).hide();
+                    }
+                }
+            }
+            $trs.eq(preRecord.index).find('td').eq(option.index).attr('rowspan', preRecord.rowspan);
+        };
+
+        // 合并列
+        // $ele 要合并的表格
+        // option 用户设置的选项
+        var margetColumn2 = function ($ele, option) {
+            var me = this;
+            var $trs = $ele.find('tbody tr');
+            var preRecord = [];//用于记录上一次值不同时的值
+            var curText = "";
+            for (var i = 0; i < $trs.length; i++) {
+                var $tr = $trs.eq(i);
+                if (i == 0) {
+                    for (var j = 0; j < option.colindex.length; j++) {
+                        preRecord.push({
+                            index: i,
+                            rowspan: 1,
+                            text: $tr.find('td').eq(option.colindex[j]).text()
+                        });
+                    }
+                }
+                else {
+                    for (var j = 0; j < option.colindex.length; j++) {
+                        var curText = $tr.find('td').eq(option.colindex[j]).text();
+                        if (preRecord[j].text != curText) {
+                            $trs.eq(preRecord[j].index).find('td').eq(option.colindex[j]).attr('rowspan', preRecord[j].rowspan);
+                            preRecord[j].index = i;
+                            preRecord[j].rowspan = 1;
+                            preRecord[j].text = curText;
+                            for (var m = j + 1; m < option.colindex.length; m++) {
+                                $trs.eq(preRecord[m].index).find('td').eq(option.colindex[m]).attr('rowspan', preRecord[m].rowspan);
+                                preRecord[m].index = i;
+                                preRecord[m].rowspan = 1;
+                                preRecord[m].text = $tr.find('td').eq(option.colindex[m]).text();
+                            }
+                            break;
+                        }
+                        else {
+                            $tr.find('td').eq(option.colindex[j]).hide();
+                            preRecord[j].rowspan++;
+                        }
+                    }
+                }
+            }
+            for (var m = 0; m < option.colindex.length; m++) {
+                $trs.eq(preRecord[m].index).find('td').eq(option.colindex[m]).attr('rowspan', preRecord[m].rowspan);
+            }
+        };
+
+        // 记录最近一次的不同值
+        // index 当前的索引
+        // $tr 当前的行
+        // option 用户设置的选项
+        var setPreRecord = function ($tr, option) {
+            var textinfo = new Object();
+            textinfo['col' + option.index] = $tr.find('td').eq(option.index).text();
+            if (option.index > 0 && option.dependent && option.dependent.length > 0) {
+                for (var i = 0; i < option.dependent.length; i++) {
+                    textinfo['col' + option.dependent[i]] = $tr.find('td').eq(option.dependent[i]).text();
+                }
+            }
+            return textinfo;
+        }
+
+        $.fn.margetable = function (options) {
+            new margetable(this, options);
+        }
+    })(jQuery, window, document);
+
+</script>
+</html>
