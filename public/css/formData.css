@@ -1,0 +1,296 @@
+#popupForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+#popupForm div {
+    margin-bottom: 10px;
+}
+
+#popupForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#popupForm input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#popupForm button {
+    width: 100px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create-new {
+    width: 100px;
+    font-size: small;
+    height: 40px;
+}
+
+#popupForm {
+    background-color: #dddd;
+    border: 1px;
+    border-color: #dddd;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+button {
+    /* border: 1px;
+    padding: 5px;
+    margin: 2px; */
+    /* color: white; */
+}
+
+.delete_btn {
+    background-color: white;
+    border: 0;
+    color: red;
+}
+
+.update_btn {
+    background-color: white;
+    border: 0;
+    color: blue;
+}
+
+.save_btn {
+    background-color: green;
+}
+
+.cancel_btn {
+    background-color: grey;
+}
+
+.submit_create_btn {
+    background-color: green;
+}
+
+.cancel_create_btn {
+    background-color: grey;
+}
+
+.action {}
+
+/* remake */
+
+#createNew {
+    cursor: pointer;
+}
+
+#popupCreate {
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(204, 204, 204, 0.5);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 100;
+}
+
+
+
+#popupForm2 {
+    position: relative;
+    background-color: #4CAF50;
+    min-width: 50%;
+    padding: 10px;
+    border-radius: 20px;
+
+    #cancel-create {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    #cancel-create:hover {
+        background-color: #ccc;
+        border-top-right-radius: inherit;
+    }
+
+    label {
+        width: 30%;
+    }
+
+    input {
+        border-radius: 5px;
+        border-width: 0;
+        min-width: 300px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .class-website {
+        display: flex;
+    }
+
+    .class-website>div {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    .class-demo>div {
+        display: flex;
+        label {
+            width: 50%;
+        }
+        div {
+            width: 50%;
+        }
+    }
+
+    .link_demo {
+        width: 350px;
+    }
+
+    textarea {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+        min-height: 100px;
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .type {
+        min-width: 200px;
+    }
+
+    .class-submit {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end; 
+
+        .create-btn {
+            border-radius: 10px; 
+            font-weight: bold;
+        }
+        .create-btn:hover {
+            background-color: #ccc; 
+        }
+    }
+
+    
+}
+
+#popupUpdate {
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(204, 204, 204, 0.5);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 100;
+}
+
+#popupForm3 {
+    position: relative;
+    background-color: #4CAF50;
+    min-width: 50%;
+    padding: 10px;
+    border-radius: 20px;
+
+    #cancel-update {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    #cancel-update:hover {
+        background-color: #ccc;
+        border-top-right-radius: inherit;
+    }
+
+    label {
+        width: 30%;
+    }
+
+    input {
+        border-radius: 5px;
+        border-width: 0;
+        min-width: 300px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .class-website {
+        display: flex;
+    }
+
+    .class-website>div {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    .class-demo>div {
+        display: flex;
+        label {
+            width: 50%;
+        }
+        div {
+            width: 50%;
+        }
+    }
+
+    .link_demo {
+        width: 350px;
+    }
+
+    textarea {
+        width: calc(100% - 40px);
+        margin-left: 20px;
+        margin-right: 20px;
+        min-height: 100px;
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .type {
+        min-width: 200px;
+    }
+
+    .class-submit {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end; 
+
+        .update-btn {
+            border-radius: 10px; 
+            font-weight: bold;
+        }
+        .update-btn:hover {
+            background-color: #ccc; 
+        }
+    }
+
+    
+}

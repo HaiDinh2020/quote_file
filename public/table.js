@@ -1,6 +1,6 @@
-var h2 = document.querySelector("h2")
+var h1 = document.querySelector("h2")
 
-h2.addEventListener("click", () => {
+h1.addEventListener("click", () => {
     console.log("hello table.js")
 })
 

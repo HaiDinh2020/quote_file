@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" 
+        crossorigin="anonymous">
+    </script>
+    <link href="css/index.css" rel="stylesheet" >
+    <link href="css/formData.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    
+       
+
+    <% var data1 = [] %>
+    <% var data2 = [] %>
+    <% var data3 = [] %>
+    <% var data4 = [] %>
+    <% var data5 = [] %>
+    <% var data6 = [] %>
+    
+    <% for (var item of data) { %>
+        <% if(item.type == 1) { %>
+            <% data1.push(item) %>
+        <% } else if(item.type == 2) { %>
+            <% data2.push(item) %>
+        <% } else if(item.type == 3) { %>
+            <% data3.push(item) %>
+        <% } else if(item.type == 4) { %>
+            <% data4.push(item) %>
+        <% } else if(item.type == 5) { %>
+            <% data5.push(item) %>
+        <% } else if(item.type == 7) { %>
+            <% data6.push(item) %>
+        <% } %>
+    <% } %>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary p-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" id="createNew"><i class="fa-solid fa-plus"></i></i></a>
+                </li>
+              
+              </ul>
+              <form class="d-flex">
+                <input id="searchDB" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="searchDB_button" class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+    </nav>
+    
+    <div class="container d-flex justify-content-between mb-4 mt-2">
+        <div></div>
+        <div class="search-container">
+            <input type="text" class="form-control search-input" id="searchInput" placeholder="Nhập tên website">
+            <button type="submit" class="btn btn-primary search-button"><span class="bi-search" ></span></button>
+        </div>
+        
+    </div>
+    
+    <div id="popupCreate">
+        <form id="popupForm2">
+            <div id="cancel-create"><i class="fa-solid fa-x"></i></div>
+            <div>
+                <label for="type">Type</label>
+                <select id="type" name="type" class="type">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+            </div>
+            <div class="class-website">
+                <div>
+                    <label class="website-lb"> Website</label>
+                    <input type="text" name="website">
+                </div>
+                <div>
+                    <label class="link-website-lb">Link Website: </label>
+                    <input 
+                        type="text" 
+                        name="link_website"
+                        class="input-link"
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label> Vị trí </label>
+                <input type="text" name="position">
+            </div>
+            <div >
+                <label> Kích thước </label>
+                <textarea  name="dimensions"></textarea>
+            </div>
+            <div>
+                <label> Nền tảng </label>
+                <select name="platform">
+                    <option>PC</option>
+                    <option>Mobile</option>
+                    <option>PC & MB</option>
+                </select>
+            </div>
+            <div class="class-demo">
+                <div>
+                    <label class="demo-lb"> Demo </label>
+                    <label class="link-demo-lb">Link Demo: </label>
+                </div>
+                <div class="input_demo">   
+                    <div>
+                        <input type="text" class="display_link_demo" name="display_link_demo">
+                    </div>
+                    <div>
+                        <input 
+                            type="text" 
+                            name="link_demo"
+                            class="link_demo"
+                        >
+                    </div> 
+                </div>
+
+                <div 
+                    id="newDemo" 
+                    style="justify-content: center; transform: translateX(-35px); cursor: pointer; margin-bottom: 10px;"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+            <div id="another_input">
+                <div>
+                    <label> Cách tính giá </label>
+                    <select name="buying_method">
+                        <option>Chia sẻ 3/ngày Share 3/day</option>
+                        <option>Chia sẻ 5/ngày Share 5/day</option>
+                        <option>Độc quyền ngày Exclusive date</option>
+                        <option>Chia sẻ 3/tuần Share 3/week</option>
+                        <option>Chia sẻ 3/tuần</option>
+                        <option>Chia sẻ 5/tuần Share 5/week</option>
+                        <option>Độc quyền/tuần</option>
+                        <option>Độc quyền/tháng</option>
+                    </select>
+                </div>
+                <div >
+                    <label> Trang chủ </label>
+                    <input type="number" name="homepage">
+                </div>
+                <div>
+                    <label> Roadblock xuyên site 
+                    (Độc quyền ngày) </label>
+                    <input type="text" name="c_s_roadblock">
+                </div>
+                <div>
+                    <label> CTR trung bình (%) </label>
+                    <input type="text" name="ctr">
+                </div>
+                <div>
+                    <label> Est. Traffic </label>
+                    <input type="text" name="est">
+                </div>
+            </div>
+           
+            <div class="class-submit">
+                <button type="submit" id="create-btn" class="create-btn">Create</button>
+            </div>
+            
+        </form>
+    </div> 
+
+    <div id="popupUpdate">
+        <form id="popupForm3">
+            <div id="cancel-update"><i class="fa-solid fa-x"></i></div>
+            
+            <div class="class-website">
+                <div>
+                    <label class="website-lb"> Website</label>
+                    <input type="text" name="website">
+                </div>
+                <div>
+                    <label class="link-website-lb">Link Website: </label>
+                    <input 
+                        type="text" 
+                        name="link_website"
+                        class="input-link"
+                    >
+                </div>
+            </div>
+
+            <div>
+                <label> Vị trí </label>
+                <input type="text" name="position">
+            </div>
+            <div >
+                <label> Kích thước </label>
+                <textarea  name="dimensions"></textarea>
+            </div>
+            <div>
+                <label> Nền tảng </label>
+                <select name="platform">
+                    <option>PC</option>
+                    <option>Mobile</option>
+                    <option>PC & MB</option>
+                </select>
+            </div>
+            <div class="class-demo">
+                <div>
+                    <label class="demo-lb"> Demo </label>
+                    <label class="link-demo-lb">Link Demo: </label>
+                </div>
+                
+
+                <div 
+                    class="newDemo" 
+                    style="justify-content: center; transform: translateX(-35px); cursor: pointer; margin-bottom: 10px;"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+            <div id="another_input_update">
+                
+            </div>
+           
+            <div class="class-submit">
+                <button type="submit" id="update-btn" class="update-btn">Update</button>
+            </div>
+            
+        </form>
+    </div>
+     
+
+    <table id="1">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ</th>
+                <th class="col9">Roadblock xuyên site 
+                    (Độc quyền ngày)</th>
+                <th class="col10">CTR trung bình (%)</th>
+                <th class="col11">Est. Traffic</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data1) { %>
+            
+                <tr class="<%= item._id %>">
+                    <td class="id"><%= item.id %></td>
+                    <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                    <td class="position"><%= item.position %></td>
+                    <td class="dimensions"><%= item.dimensions %></td>
+                    <td class="platform"><%= item.platform %></td>
+                    <td class="display_link_demo">
+                    
+                        <% item.link_demo.forEach((link, index) => { %>
+                            <a href="<%= link %>"><%= item.display_link_demo[index] || 'No Link' %></a>
+                            <br>
+                        <% }); %>
+                    </td>
+                      
+                      
+                    <td class="buying_method"><%= item.buying_method %></td>
+                    <td class="homepage"><%= item.homepage %></td>
+                    <td class="c_s_roadblock"><%= item.c_s_roadblock %></td>
+                    <td class="ctr"><%= item.ctr %></td>
+                    <td class="est"><%= item.est %></td>
+                    <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="2">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Đơn giá(VNĐ)</th>
+                <th class="col9">CTR trung bình (%)</th>
+                <th class="col10">Est.Impression</th>
+                <th class="col11">Note</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data2) { %>
+                <tr class="<%= item._id %>">
+                    <td class="id"><%= item.id %></td>
+                    <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                    <td class="position"><%= item.position %></td>
+                    <td class="dimensions"><%= item.dimensions %></td>
+                    <td class="platform"><%= item.platform %></td>
+                    <td class="display_link_demo">
+                        <% item.link_demo.forEach((link, index) => { %>
+                            <a href="<%= link %>"><%= item.display_link_demo[index] || 'No Link' %></a>
+                            <br>
+                        <% }); %>
+                    </td>
+                    <td class="buying_method"><%= item.buying_method %></td>
+                    <td class="price"><%= item.price %></td>
+                    <td class="ctr"><%= item.ctr %></td>
+                    <td class="e_i"><%= item.e_i %></td>
+                    <td class="note"><%= item.note %></td>
+                    <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="3">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Tên vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ
+                    (Đã gồm VAT)
+                </th>
+                <th class="col9">Xuyên Trang
+                    (Đã gôm VAT)
+                </th>
+                <th class="col10">CHUYÊN MỤC (*)
+                    (Đã gồm VAT)</th>
+                <th class="col11">Est. Traffic</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data3) { %>
+                <tr class="<%= item._id %>">
+                    <td class="id"><%= item.id %></td>
+                    <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                    <td class="position"><%= item.position %></td>
+                    <td class="dimensions"><%= item.dimensions %></td>
+                    <td class="platform"><%= item.platform %></td>
+                    <td class="display_link_demo">
+                        <% item.link_demo.forEach((link, index) => { %>
+                            <a href="<%= link %>"><%= item.display_link_demo[index] || 'No Link' %></a>
+                            <br>
+                        <% }); %>
+                    </td>
+                    <td class="buying_method"><%= item.buying_method %></td>
+                    <td class="homepage"><%= item.homepage %></td>
+                    <td class="cross_site"><%= item.cross_site %></td>
+                    <td class="subject"><%= item.subject %></td>
+                    <td class="note"><%= item.note %></td> 
+                    <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="4">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ
+                    (đã gồm VAT)</th>
+                <th class="col9">Roadblock xuyên site 
+                    (Độc quyền ngày)
+                    (chưa bao gồm VAT)</th>
+                <th class="col10">CTR trung bình (%)</th>
+                <th class="col11">Est. Traffic</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data4) { %>
+                <tr class="<%= item._id %>">
+                <td class="id"><%= item.id %></td>
+                <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="position"><%= item.position %></td>
+                <td class="dimensions"><%= item.dimensions %></td>
+                <td class="platform"><%= item.platform %></td>
+                <td class="display_link_demo"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="buying_method"><%= item.buying_method %></td>
+                <td class="homepage"><%= item.homepage %></td>
+                <td class="c_s_roadblock"><%= item.c_s_roadblock %></td>
+                <td class="ctr"><%= item.ctr %></td>
+                <td class="note"><%= item.note %></td>
+                <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="5">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Vị trí</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Tuần
+                    (Chia sẻ 3)</th>
+                <th class="col8">Tháng
+                    (Chia sẻ 3)</th>
+                <th class="col9">Quý
+                    (Chia sẻ 3)</th>
+                <th class="col10">Est. CTR (%)</th>
+                <th class="col11">Est. Traffic</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data5) { %>
+                <tr class="<%= item._id %>">
+                <td class="id"><%= item.id %></td>
+                <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="position"><%= item.position %></td>
+                <td class="dimensions"><%= item.dimensions %></td>
+                <td class="platform"><%= item.platform %></td>
+                <td class="display_link_demo"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="week"><%= item.week %></td>
+                <td class="month"><%= item.month %></td>
+                <td class="quarter_year"><%= item.quarter_year %></td>
+                <td class="ctr"><%= item.ctr %></td>
+                <td class="note"><%= item.note %></td>
+                <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <table id="6">
+        <thead>
+            <tr>
+                <th class = "col1">ID</th>
+                <th class="col2">Website</th>
+                <th class="col3">Format</th>
+                <th class="col4">Kích thước</th>
+                <th class="col5">Nền tảng</th>
+                <th class="col6">Demo</th>
+                <th class="col7">Cách tính giá</th>
+                <th class="col8">Trang chủ</th>
+                <th class="col9">Xuyên trang chi tiết</th>
+                <th class="col10">Xuyên trang</th>
+                <th class="col11">EST.Traffic</th>
+                <th class="action">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var item of data6) { %>
+                <tr class="<%= item._id %>">
+                <td class="id"><%= item.id %></td>
+                <td class="website"><a href="<%= item.link_website %>"><%= item.website %></a></td>
+                <td class="position"><%= item.position %></td>
+                <td class="dimensions"><%= item.dimensions %></td>
+                <td class="platform"><%= item.platform %></td>
+                <td class="display_link_demo"><a href="<%= item.link_demo %>"><%= item.display_link_demo %></a></td>
+                <td class="buying_method"><%= item.buying_method %></td>
+                <td class="homepage"><%= item.homepage %></td>
+                <td class="detailed_cross_site"><%= item.detailed_cross_site %></td>
+                <td class="cross_site"><%= item.cross_site %></td>
+                <td class="note"><%= item.note %></td>
+                <td class="action"><button class="delete_btn"><i class="fa-solid fa-trash"></i></button> <button class="update_btn"><i class="fa-solid fa-pen"></i></button></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    
+</body>
+
+
+<!-- <script src="js/script.js"></script> -->
+<script src="js/formData.js"></script>
+
+
+<script src="js/jquery.table.marge.js" ></script>
+
+</html>
